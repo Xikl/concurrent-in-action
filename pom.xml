@@ -6,7 +6,10 @@
 	<groupId>com.ximo</groupId>
 	<artifactId>concurrent-in-action</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<modules>
+		<module>multi-thread-design-pattern</module>
+	</modules>
+	<packaging>pom</packaging>
 
 	<name>concurrent-in-action</name>
 	<description>concurrent-in-action</description>
