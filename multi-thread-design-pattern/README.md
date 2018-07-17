@@ -1,5 +1,5 @@
 ### multi-thread-design-pattern
-1.Immutable Object 模式
+>1.Immutable Object 模式
 #### 角色
 - 1.1Immutable object 负责存储一组不可变状态，不会对外暴露任何可以修改器状态的方法
 （在并发编程实战中叫做逸出）
@@ -13,5 +13,7 @@
 - 1.4 所有字段，若引用了其他状态可变的对象(集合，数组，别的对象)，那么
 必须是private的，且这些字段不能暴露出去。若真的需要返回该字段的值，请
 做防御性复制，即深拷贝返回出去
+
+> 2.Thread-specific-storage(线程特有存储模式)
 
 
