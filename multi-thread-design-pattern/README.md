@@ -15,5 +15,15 @@
 做防御性复制，即深拷贝返回出去
 
 > 2.Thread-specific-storage(线程特有存储模式)
+#### 2.1 利用threadLocal等
+> 3.ThreadPool模式
+#### 3.1执行两个有依赖的任务的解决策略（防止死锁）
+- 3.1.1 采用两个线程池进行提交
+- 3.1.2 对线程池进行配置
+    + 设置线程池的大小为一个有限制，而不是`Integer.MAX_VALUE`
+    + 使用`SynchronousQueue`作为工作队列
+    + 使用`CallerRunsPolicy`作为拒绝策略
+```
 
+```
 
