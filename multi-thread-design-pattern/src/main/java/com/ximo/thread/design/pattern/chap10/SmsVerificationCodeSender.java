@@ -36,7 +36,7 @@ public class SmsVerificationCodeSender {
      */
     public void sendVerificationSms(final String msisdn) {
         Runnable sendSmsTask = () -> {
-            int verificationCode = ThreadSpecificSecureRandom.INSTACE.nextInt(999999);
+            int verificationCode = ThreadSpecificSecureRandom.INSTANCE.nextInt(999999);
             DecimalFormat df = new DecimalFormat("000000");
             String formatVerificationCode = df.format(verificationCode);
             sendSms(msisdn, formatVerificationCode);

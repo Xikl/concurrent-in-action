@@ -10,7 +10,7 @@ import java.security.SecureRandom;
  */
 public class ThreadSpecificSecureRandom {
 
-    public static final ThreadSpecificSecureRandom INSTACE = new ThreadSpecificSecureRandom();
+    public static final ThreadSpecificSecureRandom INSTANCE = new ThreadSpecificSecureRandom();
 
     private static final ThreadLocal<SecureRandom> SECURE_RANDOM = ThreadLocal.withInitial(() -> {
         try {
@@ -23,9 +23,9 @@ public class ThreadSpecificSecureRandom {
     private ThreadSpecificSecureRandom() {
     }
 
-    public int nextInt(int uppperBound) {
+    public int nextInt(int upperBound) {
         SecureRandom secureRandom = SECURE_RANDOM.get();
-        return secureRandom.nextInt(uppperBound);
+        return secureRandom.nextInt(upperBound);
     }
 
     public void setSeed(long seed) {
