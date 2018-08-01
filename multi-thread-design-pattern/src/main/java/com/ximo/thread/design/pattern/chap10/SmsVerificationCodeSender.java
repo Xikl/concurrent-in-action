@@ -27,7 +27,7 @@ public class SmsVerificationCodeSender {
     private static final ExecutorService EXECUTOR_SERVICE = Executors.newSingleThreadExecutor();
 
     private static final ScheduledExecutorService SCHEDULED_EXECUTOR_SERVICE =
-            new ScheduledThreadPoolExecutor(1, new BasicThreadFactory.Builder().daemon(true).namingPattern("sms-verification-code-thread").build());
+            new ScheduledThreadPoolExecutor(1, new BasicThreadFactory.Builder().daemon(true).namingPattern("sms-verification-code-thread-%d").build());
 
     /**
      * 生成验证码发送到手机号中
