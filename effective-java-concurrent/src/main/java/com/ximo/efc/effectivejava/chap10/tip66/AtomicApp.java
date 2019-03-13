@@ -1,4 +1,4 @@
-package com.ximo.thread.effectivejava.chap10.tip66;
+package com.ximo.efc.effectivejava.chap10.tip66;
 
 import java.util.concurrent.atomic.AtomicLong;
 
