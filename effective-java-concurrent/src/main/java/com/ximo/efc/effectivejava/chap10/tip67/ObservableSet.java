@@ -28,6 +28,32 @@ public class ObservableSet<E> extends ForwardingSet<E> {
         super(set);
     }
 
+
+    /**
+     * 采用CopyOnWriteArrayList实现无锁机制
+     * start
+     *
+     */
+    private final List<SetObserver<E>> observersByCopyOnWriteList = new CopyOnWriteArrayList<>();
+
+    public void addObserversByCopyOnWrite(SetObserver<E> observer) {
+        observersByCopyOnWriteList.add(observer);
+    }
+
+    public boolean removeObserversByCopyOnWrite(SetObserver<E> observer) {
+        return observersByCopyOnWriteList.remove(observer);
+    }
+
+    private void notifyElementAddedByCopyOnWrite(E element) {
+        for (SetObserver<E> observer : observersByCopyOnWriteList) {
+            observer.added(this, element);
+        }
+    }
+
+    /**  CopyOnWriteArrayList 无锁机制 end*/
+
+
+
     private final List<SetObserver<E>> observers = new ArrayList<>();
 
     public void addObserver(SetObserver<E> observer) {
@@ -47,6 +73,18 @@ public class ObservableSet<E> extends ForwardingSet<E> {
             for (SetObserver<E> observer : observers) {
                 observer.added(this, element);
             }
+        }
+    }
+
+    private void notifyElementAddedByCopyASnapshot(E element) {
+        List<SetObserver<E>> snapshot = null;
+        // 每个线程进来都拷贝一份该列表
+        synchronized (observers) {
+            snapshot = new ArrayList<>(observers);
+        }
+        // 然后遍历的是该份快照
+        for (SetObserver<E> observer : snapshot) {
+            observer.added(this, element);
         }
     }
 
