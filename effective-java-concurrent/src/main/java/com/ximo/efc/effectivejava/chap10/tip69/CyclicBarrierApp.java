@@ -91,7 +91,7 @@ public class CyclicBarrierApp {
      * 任务完成
      * 士兵10个任务完成
      *
-     * @see CyclicBarrier#CyclicBarrier(int, Runnable)
+     * @see CyclicBarrier#CyclicBarrier(int parties, Runnable barrierAction)
      * @param args
      */
     public static void main(String[] args) {
