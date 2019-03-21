@@ -33,6 +33,20 @@ private final ReentrantLock putLock = new ReentrantLock();
 /** Wait queue for waiting puts */
 private final Condition notFull = putLock.newCondition();
 ```
-
+- 锁粗化
+```java
+for(){
+    // 每次循环都需要获得锁
+    synchronized(object){
+        
+    }
+}
+锁粗话后 应该变成一个循环值获得一个锁
+synchronized(object){
+    for(){
+        // do something
+    }
+}
+```
 
 
