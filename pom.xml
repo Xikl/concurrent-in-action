@@ -9,6 +9,7 @@
 	<modules>
 		<module>multi-thread-design-pattern</module>
         <module>effective-java-concurrent</module>
+        <module>thinking-and-programming</module>
     </modules>
 	<packaging>pom</packaging>
 
