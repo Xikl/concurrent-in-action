@@ -1,4 +1,4 @@
-package com.ximo.thinkingandprogramming.stage3.the7conucy;
+package com.ximo.thinkingandprogramming.stage3.the7conucy.chap02;
 
 import java.util.concurrent.TimeUnit;
 
