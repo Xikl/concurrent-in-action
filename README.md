@@ -64,4 +64,25 @@ synchronized(object){
 所谓锁消除就是当一个变量如（StringBuffer Vector）等java api
 在线程栈上创建的变量，且不会逃逸，那么系统就会对其进行锁消除
 
+### 对于unsafe的理解
+具体查看 thinkingandprogramming\stage3\atomic\UnsafeApp.java
+```java
+        // 愚蠢的counter
+        //  22:47:19.679 [main] INFO com.ximo.thinkingandprogramming.stage3.atomic.UnsafeApp - end： 995793, 耗时:73
+        execute(new StupidCounter());
+
+        // sync
+        // 22:50:30.792 [main] INFO com.ximo.thinkingandprogramming.stage3.atomic.UnsafeApp - end： 1000000, 耗时:64
+        execute(new SyncCounter());
+
+        // 22:56:34.370 [main] INFO com.ximo.thinkingandprogramming.stage3.atomic.UnsafeApp - end： 1000000, 耗时:60
+        execute(new LockCounter());
+
+        // 22:59:02.303 [main] INFO com.ximo.thinkingandprogramming.stage3.atomic.UnsafeApp - end： 1000000, 耗时:53
+        execute(new AtomicCounter());
+
+        // 23:08:51.663 [main] INFO com.ximo.thinkingandprogramming.stage3.atomic.UnsafeApp - end： 1000000, 耗时:81
+        execute(new MyCasCounter());
+
+```
 
