@@ -31,6 +31,7 @@ public class VolatileTest {
      * 没有？
      * 那就是一直走下去 写线程
      * 读线程 无法读取到变化
+     * java 认为他只有读操作 直接冲线程缓存中进行读取
      *
      * @param args
      */
