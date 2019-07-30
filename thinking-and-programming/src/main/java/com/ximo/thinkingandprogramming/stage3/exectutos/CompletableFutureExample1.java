@@ -1,5 +1,7 @@
 package com.ximo.thinkingandprogramming.stage3.exectutos;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.List;
 import java.util.concurrent.*;
 import java.util.stream.IntStream;
@@ -12,6 +14,7 @@ import static java.util.stream.Collectors.toList;
  * @author xikl
  * @date 2019/4/2
  */
+@Slf4j
 public class CompletableFutureExample1 {
 
     public static void main(String[] args) throws InterruptedException {
@@ -164,30 +167,30 @@ public class CompletableFutureExample1 {
         IntStream.range(0, 10).boxed()
                 .forEach(i -> CompletableFuture.supplyAsync(CompletableFutureExample1::get)
 //                        .thenAccept(CompletableFutureExample1::display)
-                .whenComplete((result, error) -> System.out.println("done:"+Thread.currentThread().getName() + "done" + result)));
+                .whenComplete((result, error) -> log.info("done: {} done {}", Thread.currentThread().getName(), result)));
         Thread.currentThread().join();
     }
 
 
     private static void display(Integer data) {
-        System.out.println("display:" + Thread.currentThread().getName()+ "will sleep " + data);
+        log.info("display: will sleep {}", data);
         try {
             TimeUnit.SECONDS.sleep(data);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("display:" + Thread.currentThread().getName() + "sleep done, display the data:" + data);
+        log.info("display: sleep done, display the data:{}", data);
     }
 
     private static int get() {
         int value = ThreadLocalRandom.current().nextInt(20);
         try {
-            System.out.println("get:" + Thread.currentThread().getName() + "will sleep" + value);
+            log.info("get: will sleep {}",  value);
             TimeUnit.SECONDS.sleep(value);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("get:" + Thread.currentThread().getName() + "sleep done, get the data" + value);
+        log.info("get: sleep done, get the data {}", value);
         return value;
     }
 
